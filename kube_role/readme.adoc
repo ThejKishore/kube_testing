@@ -76,3 +76,7 @@ kubectl expose deployment kubegateway --type=NodePort --name=kubegateway --port 
 
 kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
 ----
+
+
+kubectl create deployment kubeadmin --image=kubeadminserver:0.0.1 --dry-run -o yaml > k8s/deployment.yaml
+kubectl expose deployment kubeadmin --type=NodePort --name=kubeadmin --port 9003 --dry-run -o yaml > k8s/service.yaml

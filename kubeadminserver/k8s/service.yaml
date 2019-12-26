@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kubeadmin
+  name: kubeadmin
+spec:
+  ports:
+  - port: 9003
+    protocol: TCP
+    targetPort: 9003
+  selector:
+    app: kubeadmin
+  type: NodePort
+status:
+  loadBalancer: {}

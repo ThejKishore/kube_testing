@@ -1,0 +1,21 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: kubeadminserver
+  main:
+    allow-bean-definition-overriding: true
+
+  security:
+    user:
+      name: user
+      password: password
+      roles: admin
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

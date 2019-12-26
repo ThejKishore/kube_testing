@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kubeadmin
+  name: kubeadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubeadmin
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: kubeadmin
+    spec:
+      containers:
+      - image: kubeadminserver:0.0.1
+        name: kubeadminserver
+        resources: {}
