@@ -1,0 +1,16 @@
+server.port: 9999
+spring:
+  application:
+    name: kubeclientsvc
+
+
+logging:
+  level:
+    app: info
+  group:
+    app: com.kish.learning.kubeclientsvc
+
+ribbon:
+  http:
+    client:
+      enabled: true

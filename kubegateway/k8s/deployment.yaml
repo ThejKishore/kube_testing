@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kubegateway
+  name: kubegateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubegateway
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: kubegateway
+    spec:
+      containers:
+      - image: kubegateway:0.0.1
+        name: kubegateway
+        imagePullPolicy: Never
+        resources: {}
+status: {}

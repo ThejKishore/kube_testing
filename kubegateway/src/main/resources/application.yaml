@@ -1,0 +1,24 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: kubegateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: kube_service
+          uri: lb://kubeservice
+          predicates:
+            - Path=/kubeservice/
+        - id: kube_client_svc
+          uri: lb://kubeclient
+          predicates:
+            - Path=/kubeclient/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
