@@ -22,3 +22,22 @@ management:
     web:
       exposure:
         include: "*"
+
+dekorate:
+  kubernetes:
+    name: kubegateway
+    version: 0.0.1-SNAPSHOT
+    group: com.kish.learning
+    service-type: NodePort
+    ports:
+      - name: http
+        host-port: 9002
+        container-port: 39002
+        node-port: 39002
+    env-vars:
+      - name: key1
+        value: key1
+        config-map: my-config
+      - name: key2
+        value: key2
+        secret: secrets
