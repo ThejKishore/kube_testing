@@ -21,8 +21,11 @@ dependencies {
     implementation("org.springframework.cloud","spring-cloud-starter")
     implementation( "org.springframework.cloud","spring-cloud-starter-loadbalancer")
     implementation( "org.springframework.cloud","spring-cloud-starter-netflix-ribbon")
-    compileOnly ("org.projectlombok","lombok")
-    annotationProcessor ("org.projectlombok","lombok")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
+    testCompileOnly("org.projectlombok:lombok:1.18.24")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 
     implementation("org.springframework.cloud","spring-cloud-starter-kubernetes-all")
     testImplementation("org.springframework.boot","spring-boot-starter-test") {
@@ -48,4 +51,8 @@ docker {
         images.set(setOf("kubeclientsvc:0.0.2", "kubeclientsvc:latest"))
         jvmArgs.set(listOf("-Xmx2048m"))
     }
+}
+
+configure<JavaPluginConvention> {
+    sourceCompatibility = JavaVersion.VERSION_1_8
 }

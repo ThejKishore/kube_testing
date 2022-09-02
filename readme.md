@@ -12,3 +12,10 @@ https://www.weave.works/blog/kubernetes-best-practices
 https://www.weave.works/blog/kubernetes-best-practices
 
 
+```shell
+gradle :kubeadminserver:dockerBuildImage
+gradle :kubeclientsvc:dockerBuildImage 
+gradle :kubegateway:dockerBuildImage 
+gradle :kubeservice:dockerBuildImage 
+
+```

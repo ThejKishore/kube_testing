@@ -46,3 +46,7 @@ docker {
 		jvmArgs.set(listOf("-Xmx2048m"))
 	}
 }
+
+configure<JavaPluginConvention> {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+}
