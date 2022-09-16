@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "02da3e8d-0189-4ff6-b27c-084bc4831ec1",
+		"name": "Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch",
+			"item": [
+				{
+					"name": "AllBooks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate if the result Size is 4\", function () {",
+									"    var jsonData = pm.response.json();",
+									"   pm.expect(jsonData.length).to.eql(4);",
+									"});",
+									"",
+									"pm.test(\"Validate if the first book is Java 8\", function () {",
+									"    var jsonData = pm.response.json();",
+									"      pm.expect(jsonData[0].bookName).to.eql(\"Java 8 \");",
+									"    pm.expect(jsonData[0].bookAuthor).to.eql(\"Venkat Subramaniam\");",
+									"    pm.expect(jsonData[0].price).to.eql(25.45);",
+									"});",
+									"",
+									"pm.test(\"Validate if the first book is Groovy\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[1].bookName).to.eql(\"Groovy \");",
+									"    pm.expect(jsonData[1].bookAuthor).to.eql(\"Venkat Subramaniam\");",
+									"    pm.expect(jsonData[1].price).to.eql(26.45);",
+									"   ",
+									"});",
+									"",
+									"pm.test(\"Validate if the third book is Spring Boot\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[2].bookName).to.eql(\"Spring Boot \");",
+									"    pm.expect(jsonData[2].bookAuthor).to.eql(\"Josh Long\");",
+									"    pm.expect(jsonData[2].price).to.eql(20.45);",
+									"  ",
+									"});",
+									"",
+									"pm.test(\"Validate if the fourt book is Head First Java\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[3].bookName).to.eql(\"Head First Java\");",
+									"    pm.expect(jsonData[3].bookAuthor).to.eql(\"David Amalraj\");",
+									"    pm.expect(jsonData[3].price).to.eql(35.45);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "save",
+			"item": [
+				{
+					"name": "AddRecord",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Validate if the result Size is \", function () {",
+									"   var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.bookName).to.eql(\"Kotlin by Parctise\");",
+									"    pm.expect(jsonData.bookAuthor).to.eql(\"Venkat Subramaniam\");",
+									"    pm.expect(jsonData.price).to.eql(28.45);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookName\": \"Kotlin by Parctise\",\n    \"bookAuthor\": \"Venkat Subramaniam\",\n    \"price\": 28.45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/books/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
